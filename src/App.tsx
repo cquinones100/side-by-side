@@ -4,17 +4,18 @@ import { Loader, google } from 'google-maps';
 import NodeGeocoder from 'node-geocoder';
 import useMapCoordinates from './hooks/useMapCoordinates';
 
-const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+const GEOCODER_KEY = process.env.REACT_APP_GOOGLE_GEOCODER_API_KEY;
 
 const customFetch = (url: string, options: { [key: string]: any}) => {
   return fetch(url, options);
 }
 
-const googleMapsLoader = new Loader(KEY, {});
+const googleMapsLoader = new Loader(MAPS_KEY, {});
 export const geocoder = NodeGeocoder({
   provider: 'google',
   fetch: customFetch,
-  apiKey: KEY,
+  apiKey: GEOCODER_KEY,
 });
 
 const DEFAULT_ZOOM = 15;
